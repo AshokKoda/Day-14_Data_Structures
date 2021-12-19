@@ -21,6 +21,23 @@ public class LinkedListSort {
 	}
 	
 	/*
+	 * Insert between nodes
+	 */
+	public void insertBetweenNode(int a, int b, int c) {
+		Node newNode = new Node(c);
+		Node temp = head;
+		while (temp.next != null) {
+			if ((temp.data == a && temp.next.data == b) || (temp.data == a && temp.next.data == b)) {
+				Node cnode = temp.next;
+				temp.next = newNode;
+				temp.next.next = cnode;
+				break;
+			}
+			temp = temp.next;
+		}
+	}
+	
+	/*
 	 * Delete node
 	 */
 	public void deleteNode(int key) {
@@ -88,30 +105,30 @@ public class LinkedListSort {
 	/*
 	 * Sort Node
 	 */
-	public void sortNode() {
-	 	   Node current = head,index =null;
-	 	   int temp;
-				if (head == null) {
-	         return;		
-	         } else {
-					while(current!=null) {
-						//node index will point to node next to current
-					index = current.next;
-					
-					while(index!=null) {
-						//if current node data is greater than index node data, swap the data between them
-						if(current.data>index.data) {
-							temp =current.data;
-							current.data=index.data;
-							index.data=temp;
-						}
-						index = index.next;
-					}
-				  current =current.next;	
-				}
-						
-			  }
-			}
+//	public void sortNode() {
+//	 	   Node current = head,index =null;
+//	 	   int temp;
+//				if (head == null) {
+//	         return;		
+//	         } else {
+//					while(current!=null) {
+//						//node index will point to node next to current
+//					index = current.next;
+//					
+//					while(index!=null) {
+//						//if current node data is greater than index node data, swap the data between them
+//						if(current.data>index.data) {
+//							temp =current.data;
+//							current.data=index.data;
+//							index.data=temp;
+//						}
+//						index = index.next;
+//					}
+//				  current =current.next;	
+//				}
+//						
+//			  }
+//			}
 	
 	/*
 	 * Print List
@@ -135,11 +152,9 @@ public class LinkedListSort {
 		sortNode.addNode(30);
 		sortNode.addNode(40);
 		sortNode.addNode(70);
-		System.out.println("Linked List Before Sorting ");
+		sortNode.insertBetweenNode(56, 70, 30);
 		sortNode.printList();
-		sortNode.sortNode();
-		System.out.println("Linked List After Sorting");
-		sortNode.printList();
+		
 
 	}
 }
